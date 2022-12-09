@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Author" content="Ringroad">
+	<meta name="theme-color" content="#9831e0">
+	<meta name="msapplication-navbutton-color" content="#9831e0">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#9831e0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" href="img/favicon.png">
+	<title>تواصل معنا</title>
+	<link rel="stylesheet" href="css/fontawesome.min.css">
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/system.js"></script>
+	<style>
+		form input {
+			margin-bottom: 13px !important;
+		}
+
+		form textarea {
+			padding: 10px 17px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 14px;
+			border-radius: 25px !important;
+			background-color: var(--scand-bg-color);
+			color: var(--text-color);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="app-container" dir="ltr">
+		<div class="page page-home page-with-subnavbar">
+			<div class="page">
+				<div class="navbar navbar-page">
+					<div class="navbar-inner sliding">
+						<div class="left">
+							<a href="../" class="link back" onclick="javascript:history.go(-1);return true;">
+								<i class="fa fa-chevron-left"></i>
+							</a>
+						</div>
+						<div class="title">
+							EGY NET تواصل مع
+						</div>
+					</div>
+				</div>
+				<div class="page-content" dir="rtl">
+					<!-- contact us -->
+					<div class="margin-pages">
+						<div class="container">
+							<div class="background-white border-radius box-shadow">
+								<div class="padding-box">
+									<h5 class="margin-bottom-small">اتصل بنا على الفور !!!</h5>
+									<p><b>لديك أسئلة واقتراحات او شكاوي ؟</b></p>
+									<p>الرجاء استخدام رابط البريد الإلكتروني أدناه <br> حتى نتمكن من الإجابة على أسئلتك
+										بشكل أسرع وفعال</p>
+									<br>
+									<div class="new">
+										<div class="massege">
+											<img src="/img/massege.svg" style="max-width: 325px;" />
+										</div>
+									</div>
+									<div class="separator-small"></div>
+
+									<form id="EmailForm" action="javascript:contactUs();" name="EmailForm"
+										class="text-center" required>
+										<input id="nama" type="text" placeholder="أدخل اسمك حضرتك هنا" required>
+										<input id="number" type="number" placeholder="أدخل رقم الهاتف الخاص بك"
+											required>
+										<input id="email" type="email" placeholder="YourEmail@gmail.com" required>
+										<textarea required id="pesan" cols="30" rows="10"
+											placeholder="اكتبلنا مشكلتك هنا ..."></textarea>
+										<button type="submit" class="buttons margin-top-middle">إرسال</button>
+									</form>
+								</div>
+							</div>
+							<div class="separator-small"></div>
+						</div>
+					</div>
+					<div class="separator">  <center><!-- لاتقوم بالتعديل هنا لانه خاص بنظام التفعيل وحقوق الملكيه تجنبا لانقطاع الخدمه عنك --><div data-title='EGY-NET' data-url='speedlink' data-id='speedlink' id='license_copyrights'><span id='source-org'>SpeedLink</span></div></center>
+</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div id="confirm" class="modal fade">
+		<div class="modal-content">
+			<div class="background-white padding-box border-radius box-shadow text-center">
+				<h6 class="margin-bottom-small">تم إرسال رسالتك بنجاح <br> يرجى انتظار الرد من خلال الواتس آب
+				</h6>
+				<div class="separator-small"></div>
+				<button class="buttons buttons-full margin-top-small box-shadow"
+					onclick="document.getElementById('confirm').style.display='none'">شكراً</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		function contactUs() {
+			// chat_id = "isi chat_id Anda";
+			chat_id = "-1001881207554";
+			// token = "isi token Anda";
+			token = "5849078625:AAF_UXLiAzZSv5EQUapXGiveDdl_n-rXiyQ";
+			message = "<b>تواصل مع احد جديد :</b>%0Aالاسم : " + $("#nama").val() + "%0Aالبريد الالكترونى : " + $("#email").val() + "%0Aرقم الهاتف :" + $("#number").val() + "%0Aالرساله : " + $("#pesan").val();
+			$.get("https://api.telegram.org/bot" + token + "/sendMessage?text=" + message + "&chat_id=" + chat_id + "&parse_mode=html");
+			$("#EmailForm").parent().hide();
+			$("#confirm").show();
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+ip >> hotspot >> walled-garden ip
+add >> action >> accept >> disabled >> no >> dst-host  
+laksa19.github.io
+script.googleusercontent.com
+script.google.com
