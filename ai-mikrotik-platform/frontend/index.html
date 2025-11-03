@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- خط Cairo للعربية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>🧠 AI-Powered MikroTik Management Platform</title>
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Cairo', sans-serif;
+        background: #0a0a0a;
+        color: #ffffff;
+        overflow-x: hidden;
+      }
+      
+      /* Loading Animation */
+      .loading-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+      
+      .loading-screen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .ai-brain-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 2rem;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      .loading-text {
+        font-size: 1.5rem;
+        font-weight: 600;
+        background: linear-gradient(90deg, #1890ff, #00f5d4, #ff006e);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient 3s ease infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+      }
+      
+      @keyframes gradient {
+        0%, 100% { background-position: 0% center; }
+        50% { background-position: 100% center; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="ai-brain-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="45" stroke="url(#gradient)" stroke-width="3" fill="none" opacity="0.3"/>
+          <circle cx="50" cy="50" r="35" stroke="url(#gradient)" stroke-width="2" fill="none" opacity="0.5"/>
+          <circle cx="50" cy="50" r="25" stroke="url(#gradient)" stroke-width="2" fill="none" opacity="0.7"/>
+          <circle cx="50" cy="50" r="8" fill="url(#gradient)"/>
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#1890ff;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#00f5d4;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#ff006e;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="loading-text">جاري تحميل العقل الصناعي...</p>
+    </div>
+    
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // إخفاء شاشة التحميل عند تحميل الصفحة
+      window.addEventListener('load', () => {
+        const loadingScreen = document.getElementById('loading-screen');
+        setTimeout(() => {
+          if (loadingScreen) {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+              loadingScreen.style.display = 'none';
+            }, 500);
+          }
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================== Base Styles ==================== */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-dark-50 text-dark-900 font-cairo;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+  
+  /* تحسين السكرول */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-500 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-600;
+  }
+}
+
+/* ==================== Custom Components ==================== */
+@layer components {
+  /* Glass Effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/5;
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-accent-cyan to-accent-pink bg-clip-text text-transparent;
+  }
+  
+  /* Gradient Background */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-500 via-accent-purple to-accent-pink;
+  }
+  
+  /* Animated Gradient */
+  .animated-gradient {
+    background: linear-gradient(-45deg, #1890ff, #7209b7, #ff006e, #00f5d4);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  /* Glow Effect */
+  .glow {
+    @apply shadow-glow-md;
+  }
+  
+  .glow-pink {
+    @apply shadow-neon-pink;
+  }
+  
+  .glow-cyan {
+    @apply shadow-neon-cyan;
+  }
+  
+  /* Card Styles */
+  .card {
+    @apply glass rounded-2xl p-6 transition-all duration-300;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-glow-lg hover:border-primary-500/50 hover:-translate-y-1;
+  }
+  
+  /* Button Styles */
+  .btn {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-500 hover:bg-primary-600 text-white shadow-glow-sm hover:shadow-glow-md;
+  }
+  
+  .btn-secondary {
+    @apply btn glass hover:bg-white/10 text-dark-900;
+  }
+  
+  .btn-accent {
+    @apply btn gradient-bg text-white shadow-glow-md hover:shadow-glow-lg;
+  }
+  
+  /* Input Styles */
+  .input {
+    @apply glass px-4 py-3 rounded-xl outline-none focus:border-primary-500 focus:shadow-glow-sm transition-all duration-300;
+  }
+  
+  /* Status Indicators */
+  .status-dot {
+    @apply w-2 h-2 rounded-full animate-pulse;
+  }
+  
+  .status-healthy {
+    @apply bg-green-500;
+  }
+  
+  .status-warning {
+    @apply bg-yellow-500;
+  }
+  
+  .status-critical {
+    @apply bg-red-500;
+  }
+  
+  /* Loading Animation */
+  .loading-spinner {
+    @apply animate-spin rounded-full border-2 border-transparent border-t-primary-500;
+  }
+  
+  /* Pulse Animation */
+  .pulse-ring {
+    @apply absolute inset-0 rounded-full border-2 border-primary-500 animate-ping opacity-75;
+  }
+}
+
+/* ==================== Utilities ==================== */
+@layer utilities {
+  /* Text Shadows */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Backdrop Filters */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Custom Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+  }
+  
+  /* RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+  
+  [dir="ltr"] {
+    direction: ltr;
+  }
+}
+
+/* ==================== Keyframes ==================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ==================== Code Syntax Highlighting ==================== */
+.code-block {
+  @apply bg-dark-100 rounded-xl p-4 overflow-x-auto font-mono text-sm;
+}
+
+.code-block code {
+  @apply text-dark-900;
+}
+
+/* ==================== Chat Widget ==================== */
+.chat-message {
+  @apply mb-4 animate-fade-in-up;
+}
+
+.chat-message.user {
+  @apply text-right;
+}
+
+.chat-message.ai {
+  @apply text-left;
+}
+
+.chat-bubble {
+  @apply inline-block max-w-[80%] px-4 py-3 rounded-2xl;
+}
+
+.chat-bubble.user {
+  @apply bg-primary-500 text-white rounded-br-sm;
+}
+
+.chat-bubble.ai {
+  @apply glass rounded-bl-sm;
+}
+
+/* ==================== Tooltip ==================== */
+.tooltip {
+  @apply glass px-3 py-2 rounded-lg text-sm;
+}
+
+/* ==================== Alert Styles ==================== */
+.alert {
+  @apply glass rounded-xl p-4 border-l-4;
+}
+
+.alert-info {
+  @apply border-primary-500;
+}
+
+.alert-warning {
+  @apply border-yellow-500;
+}
+
+.alert-error {
+  @apply border-red-500;
+}
+
+.alert-success {
+  @apply border-green-500;
+}
+
+/* ==================== Progress Bar ==================== */
+.progress-bar {
+  @apply h-2 rounded-full overflow-hidden glass;
+}
+
+.progress-fill {
+  @apply h-full gradient-bg transition-all duration-300;
+}
+
+/* ==================== Skeleton Loading ==================== */
+.skeleton {
+  @apply bg-white/5 rounded-lg animate-pulse;
+}
+
+/* ==================== Micro Animations ==================== */
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.hover-glow {
+  @apply transition-all duration-300 hover:shadow-glow-md;
+}
+
+/* ==================== Grid Patterns ==================== */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ==================== Floating Elements ==================== */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ==================== Dark Mode Adjustments ==================== */
+.dark {
+  color-scheme: dark;
+}
+
+/* ==================== Print Styles ==================== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ==================== Mobile Optimizations ==================== */
+@media (max-width: 768px) {
+  .mobile-hide {
+    display: none;
+  }
+  
+  .chat-bubble {
+    @apply max-w-[90%];
+  }
+}
+
+/* ==================== High Contrast Mode ==================== */
+@media (prefers-contrast: high) {
+  .glass {
+    @apply bg-white/20 border-white/30;
+  }
+}
+
+/* ==================== Reduced Motion ==================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
