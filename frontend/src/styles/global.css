@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply antialiased bg-midnight text-neon;
+}
+
+.glass-panel {
+  @apply bg-white/5 dark:bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl shadow-lg;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #4de4ff, #ff2d95);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
